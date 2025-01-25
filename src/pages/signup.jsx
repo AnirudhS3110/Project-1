@@ -3,31 +3,40 @@ import { Link, useNavigate } from "react-router-dom";
 import Container from "../layouts/container";
 import {motion} from "motion/react"
 import axios from "axios";
+import React from "react";
 // import jnds from "../images"
 
-export default function SignUp()
-{
-    const [name,setName]= useState("");
-    const [email,setEmail]= useState("");
-    const [username,setUserName]= useState("");
-    const [password,setPassword]= useState("");
-    const [ confirmpass,setConfirmpass] = useState("")
-    const [agree,setAgree] = useState("false");
-    const [error,setError] = useState("");
-    const nav = useNavigate();
 
-    function GetDiv({label,type,field,placeholder})
+
+
+const RightDiv= React.memo(({name,setName,email,setEmail,username,setUserName,password,setPassword,confirmpass,setConfirmpass,error,setError})=>
     {
-        const {val,setValue} = field;
         return(
-            <div className="flex flex-col mb-[20px]">
-                <label className=" mb-[10px] font-semibold">{label}</label>
-                <input className="bg-gray-300 rounded-[8px] font-normal px-[5px] py-[3px]" type = {type} value={val} onChange={e=>setValue(e.target.value)} placeholder={placeholder}/>
+            <div className="mx-auto h-[100%] w-[350px] md:max-w-[380px] md:min-w-[350px] md:w-[100%] flex flex-col justify-item-center md:px-[30px]" >
+                    <h3 className="text-center text-[30px] mb-[30px]">Sign Up</h3>
+
+                    <form className="flex flex-col" onSubmit={async(e)=>{ e.preventDefault; }}>
+                        <GetSigned name={name} setName={setName} email={email} setEmail={setEmail} username={username} setUserName={setUserName} password={password} setPassword={setPassword} confirmpass={confirmpass} setConfirmpass={setConfirmpass} />
+                        <div> 
+
+                        </div>
+                        <motion.button  whileTap={{scale:0.95}}  className="text-center w-[100p%] my-[10px] font-normal text-white bg-green-800/70 transition-colors duration-200 rounded-[8px] px-[6px] py-[4px] hover:bg-green-800/55 ">
+                                Join now
+                        </motion.button>
+                    </form>
+
+                    {error.length!=0 && <div className="mx-auto font-normal text-black my-[10px] text-[18px]"> {error} </div>}
+
+                    <p className="text-center font-normal">
+                        Already a member? <Link className="font-medium text-[18px]" to='/signin'>Log in</Link>
+                    </p>    
+
             </div>
         )
     }
+)
 
-    function GetSigned()
+function GetSigned({name,setName,email,setEmail,username,setUserName,password,setPassword,confirmpass,setConfirmpass})
     {
         return(
             <div className="flex flex-col justify-items-center ">
@@ -40,14 +49,42 @@ export default function SignUp()
         )
     }
 
-    function LeftDiv()
+function GetDiv({label,type,field,placeholder})
     {
+        const {val,setValue} = field;
+        return(
+            <div className="flex flex-col mb-[20px]">
+                <label className=" mb-[10px] font-semibold">{label}</label>
+                <input className="bg-gray-300 rounded-[8px] font-normal px-[5px] py-[3px]" type = {type} value={val} onChange={e=>setValue(e.target.value)} placeholder={placeholder}/>
+            </div>
+        )
+    }
+
+
+    const LeftDiv = React.memo(()=>{
         return(
             <motion.div  className="hidden md:flex flex-col justify-center w-auto h-auto md:min-w-[400px] md:max-w-[450px] ">
                 <motion.img whileHover={{scale: 1.1, transition:{duration:.2}}} className="" src="src/images/SignUpPageImage.png" alt="signUpPage" ></motion.img>
             </motion.div>
         )
-    }
+    })
+
+export default function SignUp()
+{
+    const [name,setName]= useState("");
+    const [email,setEmail]= useState("");
+    const [username,setUserName]= useState("");
+    const [password,setPassword]= useState("");
+    const [ confirmpass,setConfirmpass] = useState("")
+    const [agree,setAgree] = useState("false");
+    const [error,setError] = useState("");
+    const nav = useNavigate();
+
+    
+
+    
+
+    
 
     // function that hits backend after the login button is clicked
     async function onclick() 
@@ -75,40 +112,12 @@ export default function SignUp()
         }
     }
 
-    function RightDiv()
-    {
-        return(
-            <div className="mx-auto h-[100%] w-[350px] md:max-w-[380px] md:min-w-[350px] md:w-[100%] flex flex-col justify-item-center md:px-[30px]" >
-                    <h3 className="text-center text-[30px] mb-[30px]">Sign Up</h3>
-
-                    <form className="flex flex-col" onSubmit={async(e)=>{ e.preventDefault; }}>
-                        <GetSigned/>
-                        <div> 
-
-                        </div>
-                        <motion.button  whileTap={{scale:0.95}}  className="text-center w-[100p%] my-[10px] font-normal text-white bg-green-800/70 transition-colors duration-200 rounded-[8px] px-[6px] py-[4px] hover:bg-green-800/55 ">
-                                Join now
-                        </motion.button>
-                    </form>
-
-                    {error.length!=0 && <div className="mx-auto font-normal text-black my-[10px] text-[18px]"> {error} </div>}
-
-                    <p className="text-center font-normal">
-                        Already a member? <Link className="font-medium text-[18px]" to='/signin'>Log in</Link>
-                    </p>    
-
-            </div>
-        )
-    }
-
-
-
     return(
         <section className="font-bold w-[100%] b-[100%] py-auto">
             <Container>
                 <div className="md:flex flex-row justify-between">
                 <LeftDiv/>
-                <RightDiv/>
+                <RightDiv name={name} setName={setName} email={email} setEmail={setEmail} username={username} setUserName={setUserName} password={password} setPassword={setPassword} confirmpass={confirmpass} setConfirmpass={setConfirmpass} error={error} setError={setError}/>
                 </div>
             </Container>
         </section>

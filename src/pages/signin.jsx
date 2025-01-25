@@ -1,46 +1,8 @@
 import React, { useState } from "react"
-
 import Container from "../layouts/container"
 import { Link } from "react-router-dom";
 
-export default function signin()
-{
-    const [username,setusername] = useState("");
-    const [password,setPassword] = useState("");
-    function LeftDiv()
-    {
-        return(
-            <div className="hidden md:flex flex-col justify-center w-auto h-auto md:max-w-[520px] ">
-                <img className="w-[100%] h-auto" src="src/images/SignInPageImage.png" alt="signUpPage" ></img>
-            </div>
-        )
-
-    }
-
-    async function onclick() 
-    {
-        try{
-            const result = await axios.post(url,{
-                username:username,
-                password:password,
-            });
-    
-            if(result.data.success)
-            {
-                nav('/signin');
-            }
-            else{
-                setError(result.data.message);
-            }
-        }catch(e)
-        {
-            const errorMessage = e.response?.data?.message || e.message || "An unexpected error occurred.";
-            setError(errorMessage); 
-        }
-    }
-
-    function RightDiv()
-    {
+const RightDiv = React.memo(({username,setusername,password,setPassword})=>{
         return(
             <div className="mx-auto my-auto h-[100%] w-[350px] min-w-[350px] md:max-w-[415px] md:min-w-[350px] flex flex-col justify-item-center md:px-[30px]" >
 
@@ -74,18 +36,56 @@ export default function signin()
             </div>
         )
 
-    }
+    });
 
+const LeftDiv= React.memo(()=>{
+                                return(
+                                    <div className="hidden md:flex flex-col justify-center w-auto h-auto md:max-w-[520px] ">
+                                        <img className="w-[100%] h-auto" src="src/images/SignInPageImage.png" alt="signUpPage" ></img>
+                                    </div>
+                                )
+
+                            });
+
+export default function signin()
+{
+    const [username,setusername] = useState("");
+    const [password,setPassword] = useState("");
+    
+
+    async function onclick() 
+    {
+        try{
+            const result = await axios.post(url,{
+                username:username,
+                password:password,
+            });
+    
+            if(result.data.success)
+            {
+                nav('/signin');
+            }
+            else{
+                setError(result.data.message);
+            }
+        }catch(e)
+        {
+            const errorMessage = e.response?.data?.message || e.message || "An unexpected error occurred.";
+            setError(errorMessage); 
+        }
+    }
     return( 
         <section>
 
             <Container>
                 <div className="flex flex-row justify-between">
                     <LeftDiv/>
-                    <RightDiv/>
+                    <RightDiv username={username} setusername={setusername} password={password} setPassword={setPassword} />
                 </div>
             </Container>
 
         </section>
     )
 }
+
+ 
