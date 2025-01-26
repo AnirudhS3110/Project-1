@@ -4,9 +4,6 @@ import Container from "../layouts/container";
 import {motion} from "motion/react"
 import axios from "axios";
 import React from "react";
-// import jnds from "../images"
-
-
 
 
 const RightDiv= React.memo(({name,setName,email,setEmail,username,setUserName,password,setPassword,confirmpass,setConfirmpass,error,setError})=>
@@ -17,8 +14,8 @@ const RightDiv= React.memo(({name,setName,email,setEmail,username,setUserName,pa
 
                     <form className="flex flex-col" onSubmit={async(e)=>{ e.preventDefault; }}>
                         <GetSigned name={name} setName={setName} email={email} setEmail={setEmail} username={username} setUserName={setUserName} password={password} setPassword={setPassword} confirmpass={confirmpass} setConfirmpass={setConfirmpass} />
-                        <div> 
-
+                        <div className="font-medium mb-[10px]">
+                            <input type="checkbox" required/><span className="px-1">Agree to <Link className="hover:text-blue-500">Terms and Policy</Link></span>
                         </div>
                         <motion.button  whileTap={{scale:0.95}}  className="text-center w-[100p%] my-[10px] font-normal text-white bg-green-800/70 transition-colors duration-200 rounded-[8px] px-[6px] py-[4px] hover:bg-green-800/55 ">
                                 Join now
@@ -55,7 +52,7 @@ function GetDiv({label,type,field,placeholder})
         return(
             <div className="flex flex-col mb-[20px]">
                 <label className=" mb-[10px] font-semibold">{label}</label>
-                <input className="bg-gray-300 rounded-[8px] font-normal px-[5px] py-[3px]" type = {type} value={val} onChange={e=>setValue(e.target.value)} placeholder={placeholder}/>
+                <input className="bg-gray-300 focus:outline-gray-300 rounded-[8px] font-normal px-[5px] py-[3px]" type = {type} value={val} onChange={e=>setValue(e.target.value)} placeholder={placeholder}/>
             </div>
         )
     }
@@ -79,12 +76,6 @@ export default function SignUp()
     const [agree,setAgree] = useState("false");
     const [error,setError] = useState("");
     const nav = useNavigate();
-
-    
-
-    
-
-    
 
     // function that hits backend after the login button is clicked
     async function onclick() 

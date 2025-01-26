@@ -7,18 +7,18 @@ const TopDiv = React.memo(()=>{
     return(
         <div className="w-[100%] mb-[100px] flex flex-row justify-between">
             <div className="flex flex-row">
-                <motion.div whileHover={{size:1.1, transition:{duration:0.2}}} className="max-w-[165px] max-h-[70px] font-semibold text-[16px] bg-gray-300 rounded-[6px] px-[8px] py-[4px] mx-[15px]">
+                <motion.div whileHover={{scale:1.1, transition:{duration:0.15}}} className="max-w-[165px] max-h-[70px] font-semibold text-[16px] bg-gray-300 rounded-[6px] px-[8px] py-[4px] mx-[15px]">
                     <p>Active devices</p>
                     <p>5</p>
                 </motion.div>
-                <div className="max-w-[165px] max-h-[70px] font-semibold text-[16px] bg-gray-300 rounded-[6px] px-[8px] py-[4px] mx-[15px]">
+                <motion.div whileHover={{scale:1.1, transition:{duration:0.15}}} className="max-w-[165px] max-h-[70px] font-semibold text-[16px] bg-gray-300 rounded-[6px] px-[8px] py-[4px] mx-[15px]">
                     <p>Deactivated devices</p>
                     <p>5</p>
-                </div>
-                <div className="max-w-[165px] max-h-[70px] font-semibold text-[16px] bg-gray-300 rounded-[6px] px-[8px] py-[4px] mx-[15px]">
+                </motion.div>
+                <motion.div whileHover={{scale:1.1, transition:{duration:0.15}}} className="max-w-[165px] max-h-[70px] font-semibold text-[16px] bg-gray-300 rounded-[6px] px-[8px] py-[4px] mx-[15px]">
                     <p>Some devices</p>
                     <p>5</p>
-                </div>
+                </motion.div> 
             </div>
 
             <motion.div  className="min-w-[200px]">

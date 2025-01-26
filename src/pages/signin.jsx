@@ -13,11 +13,11 @@ const RightDiv = React.memo(({username,setusername,password,setPassword})=>{
                         <div className="flex flex-col justify-items-center ">
                             <div className="flex flex-col mb-[10px]">
                                 <label className=" mb-[5px] font-semibold">Username</label>
-                                <input className="bg-gray-300 rounded-[8px] font-normal px-[5px] py-[3px]" type = "text" value={username} onChange={e=>setusername(e.target.value)} placeholder="Enter username"/>
+                                <input className="bg-gray-300 focus:outline-gray-300  rounded-[8px] font-normal px-[5px] py-[3px]" type = "text" value={username} onChange={e=>setusername(e.target.value)} placeholder="Enter username"/>
                             </div>
                             <div className="flex flex-col mb-[10px]">
                                 <label className=" mb-[5px] font-semibold">Password</label>
-                                <input className="bg-gray-300 rounded-[8px] font-normal px-[5px] py-[3px]" type = "password" value={password} onChange={e=>setPassword(e.target.value)} placeholder="Enter password"/>
+                                <input className="bg-gray-300 focus:outline-gray-300 rounded-[8px] font-normal px-[5px] py-[3px]" type = "password" value={password} onChange={e=>setPassword(e.target.value)} placeholder="Enter password"/>
                             </div>
                         </div>
                     <p className="text-start text-blue-900 font-normal">
@@ -78,7 +78,7 @@ export default function signin()
         <section>
 
             <Container>
-                <div className="flex flex-row justify-between">
+                <div className="md:flex flex-row justify-between">
                     <LeftDiv/>
                     <RightDiv username={username} setusername={setusername} password={password} setPassword={setPassword} />
                 </div>

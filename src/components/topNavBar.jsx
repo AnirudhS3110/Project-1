@@ -9,7 +9,7 @@ export default function TopNavBar()
   const nav = useNavigate();
   if(location.pathname==='/' || location.pathname==='/signin' || location.pathname==='/changePassword')
     return null
-  else if(location.pathname==='/Analytics' || location.pathname==='/Dashboard' || location.pathname==='/Reports' ||location.pathname==='/Alerts' ||location.pathname==='/home' ||location.pathname==='/users')
+  else if(location.pathname==='/analytics' || location.pathname==='/dashboard' || location.pathname==='/reports' ||location.pathname==='/alerts' ||location.pathname==='/home' ||location.pathname==='/users')
   return(
     <div className='h-[100px] flex flex-row justify-start'>
 
@@ -45,15 +45,15 @@ function Heder()
     const pathname = location.pathname;
     if(pathname === '/home')
         return <GetHeader src="src/images/NavBarIcons/HomeIcon.png" pageName="HOME"/> 
-    else if( pathname === '/Alerts')
+    else if( pathname === '/alerts')
         return <GetHeader src="src/images/NavBarIcons/AlertsIcon.png" pageName="ALERTS"/>
-    else if( pathname === '/Analytics')
+    else if( pathname === '/analytics')
         return <GetHeader src="src/images/NavBarIcons/AnalyticsIcon.png" pageName="ANALYTICS"/>
-    else if( pathname === '/Dashboard')
+    else if( pathname === '/dashboard')
         return <GetHeader src="src/images/NavBarIcons/DashboardIcon.png" pageName="DASHBOARD"/>
     else if( pathname === '/users')
         return <GetHeader src="src/images/NavBarIcons/UsersIcon.png" pageName="USERS"/>
-    else if( pathname === '/Reports')
+    else if( pathname === '/reports')
         return <GetHeader src="src/images/NavBarIcons/AnalyticsIcon.png" pageName="REPORTS"/>
 }
 

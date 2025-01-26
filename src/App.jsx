@@ -13,6 +13,8 @@ import Dashboard from "./pages/dashboard"
 import Analytics from "./pages/analytics"
 import Alerts from "./pages/alerts"
 import PageNotFound from "./pages/error404"
+import Users from './pages/users'
+import Reports from './pages/reports'
 
 function App() {
 
@@ -31,18 +33,16 @@ function App() {
             <Route path="/dashboard" element={<Dashboard/>}/>
             <Route path="/analytics" element={<Analytics/>}/>
             <Route path="/alerts" element={<Alerts/>}/>
+            <Route path="/users" element={<Users/>}/>
+            <Route path="/reports" element={<Reports/>}/>
             <Route path="*" element={<PageNotFound/>}/>
-
-        </Routes>
+          </Routes>
         </HeroSection>
       </div>
     </BrowserRouter>
   
   )
 }
-
-
-
 
 
 
