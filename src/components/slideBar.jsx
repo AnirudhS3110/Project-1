@@ -18,7 +18,7 @@ export default function SlideBar()
 
 
     return(
-        <div className="w-[100%]  min-h-[140px] px-[30px]  ">
+        <div className=" max-w-[180px] min-[440px]:max-w-[360px]  min-[600px]:max-w-[540px] min-[840px]:max-w-[690px]  min-h-[140px]   ">
 
                 <div>
                     <h3 className="text-[28px] font-semibold mb-[20px]">Device Analytics</h3>
@@ -35,7 +35,7 @@ export default function SlideBar()
                             )
                         })}
                     </div>
-                    <button onClick={slideCard} className="w-[40px] h-[40px] my-auto ml-[25px]">
+                    <button onClick={slideCard} className="w-[60px] h-[60px] md:w-[40px] md:h-[40px] my-auto md:ml-[25px]">
                             <img src= "src/images/SlideBarScroll.png"/>
                     </button>
 

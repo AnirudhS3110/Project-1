@@ -1,8 +1,38 @@
 import React from "react"
-import { useState } from "react"
+import { useState, memo } from "react"
 import HeroSection from "../layouts/heroSection"
 import SlideBar from "../components/slideBar"
 import alertss from "../stores/alerts.json"
+
+
+export default function Home()
+{
+    const[alerts,setAlert] = useState(alertss);
+    
+    return( 
+    <HeroSection>
+        <div className="w-[100%]">
+            <Heder/>
+            <SlideBar/>
+            <BottomDiv alerts={alerts} setAlert={setAlert} />
+
+        </div>
+
+    </HeroSection>)
+}
+
+
+const Heder = memo(()=>
+    {
+        return(
+            <div className="w-[100%] flex flex-row justify-start mb-[20px] lg:hidden ">
+                <img className="mx-[20px]" src="src/images/NavBarIcons/AnalyticsIcon.png"></img>
+                <h1 className="text-[32px] font-bold  " >HOME</h1>
+
+            </div>
+        )
+
+    });
 
 function BottomDiv({alerts ,setAlert})
 {
@@ -49,19 +79,4 @@ function BottomDiv({alerts ,setAlert})
 }
 
 
-export default function Home()
-{
-    const[alerts,setAlert] = useState(alertss);
-    
-    return( 
-    <HeroSection>
-        <div className="w-[100%]">
-            
-            <SlideBar/>
-            <BottomDiv alerts={alerts} setAlert={setAlert} />
-
-        </div>
-
-    </HeroSection>)
-}
 
